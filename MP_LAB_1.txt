@@ -1,0 +1,202 @@
+1. Main Function
+
+1.
+#include <iostream>
+
+int main(int argc, char* argv[]) {
+    std::cout << "Number of arguments received: " << argc << std::endl;
+    
+    std::cout << "Arguments are:" << std::endl;
+    for (int i = 0; i < argc; ++i) {
+        std::cout << "Argument " << i << ": " << argv[i] << std::endl;
+    }
+    
+    return 0;
+}
+
+2. The main function serves as the entry point for program execution in both C++ and Java. It's where the operating system begins executing your program code.
+
+3. in Cpp in returns an integer value, while in java it does void meaning no exact return value 
+
+4. The integer return value from main represents the exit status of the program, there 0 means the program has been successfully completed, and non-zero means an error occurred. 
+
+
+
+2. Variables
+1.
+#include <iostream>
+
+int main() {
+    int a = 10;
+    int b = 20;
+    
+    std::cout << "Before swap: a = " << a << ", b = " << b << std::endl;
+    
+    a = a + b;
+    b = a - b;
+    a = a - b;
+    
+    std::cout << "After swap: a = " << a << ", b = " << b << std::endl;
+    
+    return 0;
+} 
+
+
+2. Primitive types like int and double store their actual values directly in memory, while reference types store addresses that point to where the real data lives somewhere else in memory. Think of primitives as the actual thing and references as directions to find the thing.
+
+3. Scope is just where a variable can be used - local scope means the variable only exists inside the function where it's created, while class-level scope means it can be used anywhere in that class. Once you leave the scope, the variable disappears.
+
+
+4. Static typing means you have to declare what type each variable is (like int or string) before you use it, and it can't change types later. Dynamic typing lets variables change types on the fly - like a variable that starts as a number but becomes text later.
+
+
+
+
+3. Control flow 
+
+1.
+#include <iostream>
+
+int main() {
+    int n1 = 0, n2 = 1, nextTerm = 0;
+    
+    std::cout << "First 10 Fibonacci numbers: ";
+    
+    for (int i = 1; i <= 10; ++i) {
+        if(i == 1) {
+            std::cout << n1 << " ";
+            continue;
+        }
+        if(i == 2) {
+            std::cout << n2 << " ";
+            continue;
+        }
+        nextTerm = n1 + n2;
+        n1 = n2;
+        n2 = nextTerm;
+        
+        std::cout << nextTerm << " ";
+    }
+    std::cout << std::endl;
+    
+    return 0;
+}
+
+2. In while loop the condition is checked before run, in do-while it is done after run.  Do-while is used when at least one execution is needed.
+
+3.  switch statement is like a fancy if-else that picks different actions based on one value. The 'case' labels are your options, 'break' stops it from falling through to the next case, and 'default' handles anything you didn't plan for.
+ 
+4. Short-circuit evaluation means if the first part of && is false or the first part of || is true, it doesn't bother checking the rest. This is super useful for things like "if the pointer exists AND it's valid" - it won't crash trying to check a null pointer.
+
+
+4. Function / methods 
+
+1.
+#include <iostream>
+#include <string>
+#include <algorithm>
+
+bool isPalindrome(const std::string& str) {
+    return std::equal(str.begin(), str.begin() + str.size() / 2, str.rbegin());
+}
+
+int main() {
+    std::cout << "madam is palindrome? " << (isPalindrome("madam") ? "true" : "false") << std::endl;
+    std::cout << "hello is palindrome? " << (isPalindrome("hello") ? "true" : "false") << std::endl;
+    return 0;
+}
+
+2. In C++ you can pass by value (copies the data), by pointer (passes the memory address), or by reference (passes an alias), while Java always passes by value but for objects it passes a copy of the reference. So in Java you get a copy of the address that still points to the same object.
+
+
+3. Function overloading means having multiple functions with the same name but different parameters - you can change the number of parameters, their types, or their order to make different versions. The function name alone isn't enough; the compiler uses the parameters to figure out which version you want.
+
+4. Recursion is when a function calls itself to solve a problem by breaking it into smaller pieces. The base case is the stopping condition that prevents infinite calls - without it your function would call itself forever and crash.
+
+
+5. Comments
+
+1.
+
+2. Comments are important especially if the project done in a group so that other user would know what his/her teammate has done. 
+
+3. Documentation systems like Javadoc and Doxygen automatically generate nice-looking documentation websites from special comments in your code. They turn your comments into proper manuals that explain how to use your functions and classes.
+
+4. "Self-documenting code" means writing code so clear that it explains itself through good variable names and simple logic. You still need comments to explain the "why" behind decisions, complex algorithms, or business rules that aren't obvious from the code itself.Retry
+ 
+
+6. Classes
+
+1.
+
+2. A class is like a blueprint that describes what something should look like and do, while an object is the actual thing you create from that blueprint. Think of it like a cookie cutter (class) versus the actual cookies (objects) you make with it.
+
+3. Public means anyone can access it, private means only that class can use it, and protected means the class and its children can access it but nobody else. It's like having public areas, private rooms, and family-only spaces in a house.
+
+
+4.A constructor is a special function that runs automatically when you create an object to set it up properly. A default constructor takes no parameters, and the compiler gives you one for free if you don't write any constructors yourself.
+
+7. Enums 
+1.
+
+2. Java enums are like mini-classes that can have methods, fields, and constructors, while C++ enums are simpler but newer "enum class" versions are type-safe. Old C-style enums were just fancy names for integers, but modern enums in both languages prevent you from mixing different enum types accidentally
+
+3. Enums make your code safer because the compiler won't let you mix up different types of values, and they make code self-explanatory since names like Status.ACTIVE are clearer than magic numbers like 1. You can't accidentally pass a day of the week where a color is expected.
+
+
+4. Java enums are like mini-classes that can have methods, fields, and constructors, while C++ enums are simpler but newer "enum class" versions are type-safe. Old C-style enums were just fancy names for integers, but modern enums in both languages prevent you from mixing different enum types accidentally
+
+8.Inheritance 
+ 
+1.
+
+2.  IS-a means that one function is fully inherited by another. While has-a means that one is like a part of another but it can not be fully replaced. 
+
+3. Method overriding is when a child class provides its own version of a method that already exists in the parent class, replacing the parent's behavior. In C++ you need 'virtual' in the parent and 'override' in the child to make it work properly, while Java does it automatically and '@Override' is just a safety check to make sure you're actually overriding something that exists.
+
+4.The Diamond Problem happens when a class inherits from two classes that both inherit from the same parent, creating confusion about which version of a method to use. C++ solves this with virtual inheritance to make sure there's only one copy of the shared parent, while Java completely avoids the problem by only allowing single inheritance and using interfaces instead of multiple class inheritance.
+
+
+9.Mixins 
+1.
+
+2. Mixins and default methods let you add specific abilities to classes without forcing them into a rigid family tree, so a class can "fly" and "swim" without having to be a "bird" or "fish." They promote code reuse by letting you pick and choose features like adding ingredients to a recipe.
+
+3. Java's default methods in interfaces work like mixins by letting you write actual code inside interfaces that classes can inherit automatically. This means multiple interfaces can provide ready-made functionality that classes get for free just by implementing them.
+
+
+4.Inheritance creates tight family relationships but can be inflexible, composition lets you build objects like Lego blocks with more flexibility, and mixins give you the best of both by adding specific abilities without rigid hierarchies. Choose inheritance for true "is-a" relationships, composition when you want flexibility, and mixins when you want to share specific behaviors across unrelated classes.
+
+
+10. Polymorphism 
+1.
+
+2.Compile-time polymorphism is when the compiler decides which method to use based on different parameters (like having multiple print(int) and print(string) methods), while runtime polymorphism is when the program decides during execution based on the actual object type (like a Shape pointer calling different draw() methods for circles vs squares). One is decided before the program runs, the other while it's running.
+
+3. An abstract class is like a half-finished blueprint that can have some real methods and some incomplete ones, while an interface is purely a contract that says "you must implement these methods." Use abstract classes when you want to share some common code, and interfaces when you just want to define what methods a class must have.
+
+
+4. Interfaces and pure virtual functions create contracts that force different classes to implement the same methods, so you can treat different objects the same way through a common interface. This lets you write code that works with any object that follows the contract, like having a move() method that works for cars, planes, and boats without knowing which specific type you're dealing with.
+
+
+11. Async Operations 
+1.
+
+2.Asynchronous programming prevents your program from freezing while waiting for slow operations like loading files or downloading data from the internet. Instead of sitting idle, your program can do other useful work while waiting for the slow stuff to finish.
+
+3.Parallel execution means multiple things actually happen at the exact same time on different processors, while concurrent execution means juggling multiple tasks by rapidly switching between them on the same processor. It's like having multiple people work simultaneously versus one person quickly switching between different tasks.
+
+
+4.A Future or Promise is like a receipt for work that's still being done - you can check if it's finished, get the result when it's ready, or do other things while waiting. Both Java's Future/CompletableFuture and C++'s std::future work this way, letting you start a task and come back later to collect the results without blocking your program.
+
+
+12. Exceptions   
+1.
+
+2.'Try' contains risky code that might fail, 'catch' handles the errors when they happen, and 'finally' runs cleanup code no matter what. C++ doesn't have 'finally' but uses RAII where objects automatically clean up when they go out of scope, like files closing themselves when the variable disappears.
+
+
+3.Java's checked exceptions must be handled or declared (like IOException), while unchecked ones can be ignored (like NullPointerException). C++ doesn't make this distinction - all exceptions work the same way and you can choose whether to catch them or not.
+
+
+4.Exceptions are better than error codes because they can't be accidentally ignored and they separate error handling from normal code, making it cleaner to read. The downside is they can slow down your program and make it harder to predict exactly where errors will be handled, plus they can create confusing control flow.Retry
